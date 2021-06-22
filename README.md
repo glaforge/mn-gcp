@@ -30,5 +30,6 @@ http POST localhost:8080/webhook hello=1234
 
 ```
 ./gradlew shadowJar
+
 gcloud functions deploy webhook --entry-point io.micronaut.gcp.function.http.HttpFunction --trigger-http --runtime java11 --memory 2048MB --region europe-west1 --allow-unauthenticated --source build/libs 
 ```
