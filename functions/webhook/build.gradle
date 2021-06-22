@@ -1,0 +1,45 @@
+plugins {
+    id("groovy") 
+    id("com.github.johnrengelman.shadow") version "7.0.0"
+    id("io.micronaut.application") version "1.5.0"
+}
+
+version = "0.1"
+group = "mngcp"
+
+repositories {
+    mavenCentral()
+}
+
+micronaut {
+    runtime("google_function")
+    testRuntime("spock2")
+    processing {
+        incremental(true)
+        annotations("mngcp.*")
+    }
+}
+
+dependencies {
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("javax.annotation:javax.annotation-api")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    implementation("io.micronaut:micronaut-validation")
+
+    testImplementation("io.micronaut:micronaut-http-client")
+
+    testImplementation("io.micronaut.servlet:micronaut-servlet-core")
+
+}
+
+
+application {
+    mainClass.set("mngcp.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
+}
+
+
+
