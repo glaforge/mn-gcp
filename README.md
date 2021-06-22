@@ -23,7 +23,11 @@ mn create-app --build=gradle --jdk=11 --lang=java --test=spock --features=google
 curl --location --request GET 'https://next.micronaut.io/create/default/mngcp.webhook?lang=JAVA&build=GRADLE&test=SPOCK&javaVersion=JDK_11&features=google-cloud-function' --output webhook.zip
 ```
 
+Run the service locally and invoke it:
+
 ```
+./gradlew run
+
 curl -X POST http://localhost:8080/webhook -H "Content-Type: application/json" -d '{"test":123}'
 http POST localhost:8080/webhook hello=1234
 ```
