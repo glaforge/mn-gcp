@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: mngcp
+testFramework: spock
+sourceLanguage: java
+buildTool: gradle
+features: [annotation-api, app-name, google-cloud-function, google-cloud-function-http, gradle, java, java-application, logback, readme, shade, spock, yaml]
