@@ -45,3 +45,26 @@ gcloud functions deploy webhook --entry-point io.micronaut.gcp.function.http.Htt
 
 gcloud functions deploy pubsub --entry-point mngcp.PubSubFunction --trigger-topic events --runtime java11 --memory 2048MB --region europe-west1 --source build/libs 
 ```
+
+## App Engine
+
+### Backend
+
+Backend composed of a static part and a dynamic part.
+
+You can serve the static part with:
+
+```
+python3 -m http.server 8080
+```
+
+Build and deploy both static and dynamic parts with:
+
+```
+cd appengine/backend
+
+./gradlew shadowJar
+./gradlew appEngineStage
+
+gcloud app deploy build/staged-app/ -q
+```
