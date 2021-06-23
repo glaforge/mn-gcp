@@ -68,3 +68,15 @@ cd appengine/backend
 
 gcloud app deploy build/staged-app/ -q
 ```
+
+## Cloud Run
+
+Enable Cloud Run, Cloud Build, configure Docker, build with Jib:
+
+```
+gcloud services enable run.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
+gcloud auth configure-docker
+./gradlew jib
+
+```
