@@ -1,7 +1,7 @@
 package mngcp;
 
 import java.util.Random;
-
+import java.util.concurrent.TimeUnit;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
 import io.micronaut.http.sse.Event;
@@ -12,20 +12,35 @@ import org.reactivestreams.Publisher;
 
 @Controller("/livefeed")
 public class LivefeedController {
+
     @ExecuteOn(TaskExecutors.IO)
     @Get(produces = MediaType.TEXT_EVENT_STREAM)
-    public Publisher<Event> index() { 
-        Random rand = new Random();
-        return Flowable.generate(() -> 0, (i, emitter) -> { 
-            if (i < 20) {
-                emitter.onNext( 
-                    Event.of("Dice: " + (rand.nextInt(6) + 1))
-                );
-                try { Thread.sleep(1000); } catch (Throwable t) {}
-            } else {
-                emitter.onComplete(); 
-            }
+    Publisher<Event<Dice>> index() {
+        final Flowable<Long> tick = Flowable.interval(500, TimeUnit.MILLISECONDS);
+        final Flowable<Dice> diceRolls = Flowable.generate(() -> 0, (i, emitter) -> { 
+            emitter.onNext(new Dice());
+            if (i == 100) emitter.onComplete();
             return ++i;
-        });
+        });;
+ 
+        return tick.zipWith(diceRolls, this::createEvent);
+    }
+
+    private Event<Dice> createEvent(Long counter, Dice diceRoll) {
+        return Event.of(diceRoll)
+                    .id(String.valueOf(counter));
+    }
+ }
+
+ class Dice {
+    private int value;
+    private static transient Random rand = new Random();
+
+    public Dice() {
+        this.value = rand.nextInt(6) + 1;
+    }
+
+    public int getValue() {
+        return this.value;
     }
  }
