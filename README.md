@@ -69,7 +69,28 @@ cd appengine/backend
 gcloud app deploy build/staged-app/ -q
 ```
 
+### With GraalVM
+
+Bug with the version of GraalVM used by Micronaut 3.0.0-M1 and M2.
+Must use Micronaut 2.5.6, by changing `gradle.properties`'s version.
+
+```
+./gradlew dockerBuildNative
+
+# Run the container in another terminal
+docker run -p 8080:8080 backend:latest --rm -it
+
+# Copy the native binary application locally
+# Find the container id currently running
+docker cp c781798142e8:/app/application stage/
+
+# Deploy app.yaml and application from a stage/ directory
+gcloud app deploy stage
+```
+
 ## Cloud Run
+
+### Build with JIB and deploy
 
 Enable Cloud Run, Cloud Build, configure Docker, build with Jib:
 
@@ -80,4 +101,14 @@ gcloud auth configure-docker
 
 ./gradlew jib
 gcloud run deploy dice --image gcr.io/chessnuts/livefeed --allow-unauthenticated
+```
+
+### Deploy a GraalVM native image
+
+Reuse the "vegetable" backend deployed on App Engine, built inside a container, and deploy that container:
+
+```
+docker tag vegetable_backend:latest gcr.io/chessnuts/vegetable_backend
+docker push gcr.io/chessnuts/vegetable_backend
+gcloud run deploy vegetable-backend --image gcr.io/chessnuts/vegetable_backend --allow-unauthenticated
 ```
