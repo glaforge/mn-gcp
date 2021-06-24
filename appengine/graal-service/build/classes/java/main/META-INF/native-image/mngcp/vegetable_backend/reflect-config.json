@@ -1,0 +1,8 @@
+[ {
+  "name" : "mngcp.Vegetable[]"
+}, {
+  "name" : "mngcp.Vegetable",
+  "allDeclaredFields" : true,
+  "allPublicMethods" : true,
+  "allDeclaredConstructors" : true
+} ]

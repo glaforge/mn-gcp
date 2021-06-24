@@ -21,3 +21,35 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+appengine/graal-service/build/.docker/dockerBuildNative-imageId.txt
+appengine/graal-service/build/classes/java/main/META-INF/native-image/mngcp/backend/reflect-config.json
+appengine/graal-service/build/classes/java/main/META-INF/native-image/mngcp/backend/resource-config.json
+appengine/graal-service/build/classes/java/main/META-INF/services/io.micronaut.core.beans.BeanIntrospectionReference
+appengine/graal-service/build/classes/java/main/META-INF/services/io.micronaut.inject.BeanDefinitionReference
+appengine/graal-service/build/docker/DockerfileNative
+appengine/graal-service/build/layers/resources/application.yml
+appengine/graal-service/build/layers/resources/logback.xml
+appengine/graal-service/build/resources/main/application.yml
+appengine/graal-service/build/resources/main/logback.xml
+appengine/graal-service/build/tmp/compileJava/source-classes-mapping.txt
+appengine/graal-service/build/tmp/runnerJar/MANIFEST.MF
+.gitignore
+appengine/graal-service/.gradle/7.0/gc.properties
+appengine/graal-service/.gradle/7.0/dependencies-accessors/dependencies-accessors.lock
+appengine/graal-service/.gradle/7.0/dependencies-accessors/gc.properties
+appengine/graal-service/.gradle/7.0/executionHistory/executionHistory.bin
+appengine/graal-service/.gradle/7.0/executionHistory/executionHistory.lock
+appengine/graal-service/.gradle/7.0/fileChanges/last-build.bin
+appengine/graal-service/.gradle/7.0/fileHashes/fileHashes.bin
+appengine/graal-service/.gradle/7.0/fileHashes/fileHashes.lock
+appengine/graal-service/.gradle/7.0/javaCompile/classAnalysis.bin
+appengine/graal-service/.gradle/7.0/javaCompile/javaCompile.lock
+appengine/graal-service/.gradle/7.0/javaCompile/taskHistory.bin
+appengine/graal-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock
+appengine/graal-service/.gradle/buildOutputCleanup/cache.properties
+appengine/graal-service/.gradle/buildOutputCleanup/outputFiles.bin
+appengine/graal-service/.gradle/checksums/checksums.lock
+appengine/graal-service/.gradle/checksums/md5-checksums.bin
+appengine/graal-service/.gradle/checksums/sha1-checksums.bin
+appengine/graal-service/.gradle/configuration-cache/gc.properties
+appengine/graal-service/.gradle/vcs-1/gc.properties
