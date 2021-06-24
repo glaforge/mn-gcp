@@ -77,6 +77,7 @@ Enable Cloud Run, Cloud Build, configure Docker, build with Jib:
 gcloud services enable run.googleapis.com
 gcloud services enable cloudbuild.googleapis.com
 gcloud auth configure-docker
-./gradlew jib
 
+./gradlew jib
+gcloud run deploy dice --image gcr.io/chessnuts/livefeed --allow-unauthenticated
 ```
